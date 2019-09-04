@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+char getSex(char*);
+int main()
+{
+    char sex;
+    getSex(&sex);
+    printf("El sexo ingresado es %c", sex);
+    return 0;
+}
+
+char getSex(char *s){
+char sex;
+
+printf("Ingrese sexo f o m: ");
+fflush(stdin);
+scanf("%c",&sex);
+sex= tolower(sex);
+
+while (!(sex=='f'||sex=='m')){
+printf("Error. Ingrese f o m: ");
+fflush(stdin);
+scanf("%c",&sex);
+sex= tolower(sex);
+}
+
+*s=sex;
+return *s;
+}
