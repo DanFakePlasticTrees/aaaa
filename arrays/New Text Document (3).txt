@@ -1,0 +1,30 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int buscarNumero(int num, int vec[], int tam);
+int main()
+{
+    int numeros[]={2,4,5,3,6,5,8,8,9,10};
+    
+    int indice;
+ 
+    indice=buscarNumero(8,numeros, 10);
+if (indice==0){
+    printf("No se encuentra el número");
+    
+}
+
+    return 0;
+}
+
+int buscarNumero(int num, int vec[], int tam){
+int indice=0;
+for(int i =0; i<tam; i++){
+
+if (num==vec[i]){
+ printf(" El num %d esta en el indice: %d y la posicion: %d \n",num,i, i+1);
+   indice=1;} 
+  }
+return indice;  
+}
