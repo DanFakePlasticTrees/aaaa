@@ -130,6 +130,7 @@ void mostrarAlumnos(eAlumno vec[], int tam)
         printf("\nNo hay alumnos que mostrar");
         printf("\n\n");
     }
+}
 
 
 
@@ -274,7 +275,7 @@ void mostrarAlumnos(eAlumno vec[], int tam)
 
     eAlumno newAlumno(int legajo, char nombre[],char sexo, int edad, int nota1, int nota2, eFecha fecha){
 
-        eAlumno nuevoAlumno;
+         eAlumno nuevoAlumno;
 
         nuevoAlumno.legajo=legajo;
         strcpy(nuevoAlumno.nombre,nombre);
@@ -289,5 +290,4 @@ void mostrarAlumnos(eAlumno vec[], int tam)
         return nuevoAlumno;
 
 
-    }
-
+   }
