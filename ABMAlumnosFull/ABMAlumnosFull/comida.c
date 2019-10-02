@@ -11,7 +11,8 @@ void mostrarComidas(eComida comidas[], int tam){
 
 void mostrarComida(eComida comida){
 
-    printf("  %d      %10s    %4.2f\n", comida.id, comida.descripcion,precio);
+    printf("  %d      %10s,    %4.2f \n",
+            comida.id, comida.descripcion,comida.precio);
 
 }
 

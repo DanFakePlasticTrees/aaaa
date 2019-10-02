@@ -149,3 +149,60 @@
 1569850247 source:c:\users\alumno\desktop\abmalumnosfull\abmalumnosfull\comida.c
 	"comida.h"
 
+1570016383 source:c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\almuerzo.c
+	"almuerzo.h"
+
+1570016383 c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\almuerzo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"alumno.h"
+	"comida.h"
+
+1570016383 c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\alumno.h
+	"carrera.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1570016383 c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\carrera.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1570016383 c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\comida.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1570016383 source:c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\alumno.c
+	"alumno.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1570016383 source:c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\carrera.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"carrera.h"
+
+1570028462 source:c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\comida.c
+	"comida.h"
+
+1570028512 source:c:\users\alumno\downloads\aaaa-master\aaaa-master\abmalumnosfull\abmalumnosfull\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"carrera.h"
+	"alumno.h"
+	"comida.h"
+	"almuerzo.h"
+

@@ -18,7 +18,7 @@
 
 int menu();
 int menuInformes();
-void InformesAlumnos(eAlumno alumnos[],eComida comida[], eAlmuerzo almuerzos[], int tamAlmuerzo, int tamAlum, eCarrera carreras[], int tamC);
+void InformesAlumnos(eAlumno alumnos[],eComida comida[], eAlmuerzo almuerzos[], int tamAlmuerzo, int tamAlum, eCarrera carreras[], int tamC, int tamComidas);
 void mostrarAlumnosXCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
 void mostrarAlumnosCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC, int idCarrera);
 void mostrarAlumnosDeUnaCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
@@ -28,8 +28,11 @@ void mejoresPromediosXCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], i
 void carreraMasCursada(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC);
 void mostrarFechaAlmuerzo(eComida comidas[], int tamC, eAlmuerzo almuerzos [], int tamAlm);
 int compararFechas(eFecha f1, eFecha f2);
-
-
+int cantidadAlmuerzosCarrera(int idCarrera, eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo);
+void informarAlmuerzosxCarrera(eCarrera carreras [], int tamCar,eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo);
+int cantidadAlmuerzosMilanesaxCarrera(int idCarrera, eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo);
+float totalDeudaAlumno(int legajo,eAlmuerzo almuerzos[], int tamAlmuerzos, eComida comidas [], int tamComidas);
+void informarDeudaAlumno ( eAlumno alumnos[], int tamAlumno, eAlmuerzo almuerzos[], int tamAlmuerzos, eComida comidas [], int tamComidas, eCarrera carreras[], int tamCarrera);
 
 
 int main()
@@ -77,26 +80,27 @@ int main()
             break;
 
         case 6:
-            InformesAlumnos(lista, comidas,almuerzos,TAMAL,TAM,carreras,TAMC);
+            InformesAlumnos(lista, comidas,almuerzos,TAMAL,TAM,carreras,TAMC, TAMCOM);
             break;
 
         case 7:
             mostrarCarreras(carreras, TAMC);
             break;
 
-         case 8:
+        case 8:
             mostrarComidas(comidas, TAMCOM);
             break;
 
-         case 9:
+        case 9:
             mostrarAlmuerzos(almuerzos, TAMAL, comidas, TAMCOM);
             break;
 
-         case 10:
-           if (altaAlmuerzo(almuerzos, TAMAL, idAlmuerzo, lista, TAM, comidas, TAMCOM, carreras, TAMC)){
-            idAlmuerzo++;
-           }
-           break;
+        case 10:
+            if (altaAlmuerzo(almuerzos, TAMAL, idAlmuerzo, lista, TAM, comidas, TAMCOM, carreras, TAMC))
+            {
+                idAlmuerzo++;
+            }
+            break;
 
         case 11:
             printf("Confirma salir?:");
@@ -152,11 +156,12 @@ int menuInformes()
     printf("6-Mostrar Alumnos Varones\n");
     printf("7-Mostrar Mujeres de Alguna Carrera\n");
     printf("8-Mostrar Alumnos mayores a 30 de Licenciatura\n");
-    printf("9-Mostrar almuerzos de una fecha determinada\n\n");
-    printf("10-Listar alumnos que comieron una determinada comida\n\n");
-printf("11-Listar Cantidad de almuerzos por carrera\n\n");
-printf("12-Carera amante de las milanesas\n\n");
-printf("11-Informe deuda alumno seleccionado\n\n");
+    printf("9-Mostrar almuerzos de una fecha determinada\n");
+    printf("10-Listar alumnos que comieron una determinada comida\n");
+    printf("11-Listar Cantidad de almuerzos por carrera\n");
+    printf("12-Carera amante de las milanesas\n");
+    printf("13-Informe deuda alumno seleccionado\n");
+    printf("14-Informe ganancia por comida\n");
     printf("20-Salir\n\n");
     printf("Ingrese opcion: ");
     scanf("%d", &opcion);
@@ -164,8 +169,11 @@ printf("11-Informe deuda alumno seleccionado\n\n");
     return opcion;
 }
 
-void InformesAlumnos(eAlumno alumnos[],eComida comida[], eAlmuerzo almuerzos[], int tamAlmuerzo, int tamAlum, eCarrera carreras[], int tamC)
+void InformesAlumnos(eAlumno alumnos[],eComida comida[], eAlmuerzo almuerzos[], int tamAlmuerzo, int tamAlum, eCarrera carreras[], int tamC, int tamComidas)
 {
+
+
+
     char salir = 'n';
     system("cls");
     printf("***** Informes Alumnos ****\n\n");
@@ -205,13 +213,21 @@ void InformesAlumnos(eAlumno alumnos[],eComida comida[], eAlmuerzo almuerzos[], 
         case 8:
             printf("Informe 8\n");
             break;
- case 9:
+        case 9:
             mostrarFechaAlmuerzo(comida, tamC, almuerzos,tamAlmuerzo);
             break;
- case 10:
+        case 10:
             printf("Informe 10\n");
             break;
+        case 11:
 
+            informarAlmuerzosxCarrera(carreras,tamC,almuerzos,alumnos, tamAlum,tamAlmuerzo);
+break;
+       case 13:
+      informarDeudaAlumno(alumnos,tamAlum,almuerzos,tamAlmuerzo,comida,tamComidas,carreras,tamC);
+
+
+            break;
         case 20:
             printf("Confirma salir?:");
             fflush(stdin);
@@ -356,7 +372,8 @@ void carreraMasCursada(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC
     }
 }
 
-void mejoresPromediosXCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC){
+void mejoresPromediosXCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], int tamC)
+{
 
     char desc[20];
     float mayor;
@@ -364,59 +381,258 @@ void mejoresPromediosXCarrera(eAlumno alumnos[], int tam, eCarrera carreras[], i
     system("cls");
     printf("***Mejores Promedios por Carrera***\n\n");
 
-    for( int i=0; i < tamC; i++){
-         cargarDescCarrera(carreras[i].id, carreras, tamC,desc);
-         printf("Carrera: %s\n\n", desc);
+    for( int i=0; i < tamC; i++)
+    {
+        cargarDescCarrera(carreras[i].id, carreras, tamC,desc);
+        printf("Carrera: %s\n\n", desc);
 
-         for(int j=0; j < tam; j++){
-            if( ((mayor < alumnos[j].promedio && alumnos[j].isEmpty == 0) && (alumnos[j].idCarrera == carreras[i].id)) || ( flag == 0  && alumnos[j].idCarrera == carreras[i].id)){
+        for(int j=0; j < tam; j++)
+        {
+            if( ((mayor < alumnos[j].promedio && alumnos[j].isEmpty == 0) && (alumnos[j].idCarrera == carreras[i].id)) || ( flag == 0  && alumnos[j].idCarrera == carreras[i].id))
+            {
                 mayor = alumnos[j].promedio;
                 flag = 1;
             }
-         }
+        }
 
-         printf("Promedio: %.2f\n\n", mayor);
-         mayor = 0;
-         flag = 0;
+        printf("Promedio: %.2f\n\n", mayor);
+        mayor = 0;
+        flag = 0;
     }
 }
 
 
-void mostrarFechaAlmuerzo(eComida comidas[], int tamC, eAlmuerzo almuerzos [], int tamAlm){
+void mostrarFechaAlmuerzo(eComida comidas[], int tamC, eAlmuerzo almuerzos [], int tamAlm)
+{
 
+    int flag=0;
+    eFecha fecha;
+    system("cls");
+    printf("***Informe Almuerzos por fecha***\n\n");
+
+    printf("Ingrese una fecha: dd/mm/aaaa");
+    scanf("%d/%d/%d",&fecha.dia,&fecha.mes,&fecha.anio);
+
+    for (int i=0; i <tamAlm; i++)
+    {
+
+        if(almuerzos[i].isEmpty==0 && compararFechas(fecha, almuerzos[i].fecha))
+        {
+
+            mostrarAlmuerzo(almuerzos[i],comidas,tamC);
+            flag=1;
+        }
+
+        if(flag==0)
+        {
+
+            printf("no se encontrarn almuerzos \n\n");
+        }
+    }
+
+
+}
+
+int compararFechas(eFecha f1, eFecha f2)
+{
+
+    int sonIguales=0;
+
+    if(f1.dia== f2.dia && f1.mes==f2.mes && f1.anio==f2.anio)
+    {
+
+        sonIguales=1;
+    }
+
+    return sonIguales;
+}
+
+
+
+int cantidadAlmuerzosCarrera(int idCarrera, eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo)
+{
+
+
+
+
+    int contador=0;
+
+    for (int i=0; i<tamAlumno; i++)
+    {
+
+        if (!alumnos[i].isEmpty&&alumnos[i].idCarrera==idCarrera)
+        {
+
+            for(int j=0; j<tamAlmuerzo; j++)
+            {
+
+
+                if(!almuerzos[j].isEmpty&&almuerzos[j].legajo==alumnos[i].legajo)
+                {
+
+                    contador++;
+
+
+                }
+
+
+            }
+
+
+        }
+
+
+
+    }
+
+    return contador;
+
+
+}
+
+
+void informarAlmuerzosxCarrera(eCarrera carreras [], int tamCar,eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo)
+{
+
+    int cant;
+
+    system("cls");
+    printf("*******Almuerzos por carrera*********\n\n");
+
+
+
+
+    for (int i=0; i<tamCar; i++)
+    {
+        cant=cantidadAlmuerzosCarrera(carreras[i].id,almuerzos,alumnos,tamAlumno,tamAlmuerzo);
+        printf("%s:  %d\n", carreras[i].descripcion,cant);
+
+
+    }
+
+}
+
+
+
+int cantidadAlmuerzosMilanesaxCarrera(int idCarrera, eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo)
+{
+
+
+
+
+    int contador=0;
+
+    for (int i=0; i<tamAlumno; i++)
+    {
+
+        if (!alumnos[i].isEmpty&&alumnos[i].idCarrera==idCarrera)
+        {
+
+            for(int j=0; j<tamAlmuerzo; j++)
+            {
+
+
+                if(!almuerzos[j].isEmpty&&almuerzos[j].legajo==alumnos[i].legajo&&almuerzos[j].idComida==5004)
+                {
+
+                    contador++;
+
+
+                }
+
+
+            }
+
+
+        }
+
+
+
+    }
+
+    return contador;
+
+
+}
+
+
+void mostrarCarreraMasMilanesas (eCarrera carreras [], int tamCar,eAlmuerzo almuerzos[], eAlumno alumnos[], int tamAlumno, int tamAlmuerzo)
+{
+
+
+int mila[tamCar];
+int mayor;
 int flag=0;
-eFecha fecha;
-system("cls");
-printf("***Informe Almuerzos por fecha***\n\n");
 
-printf("Ingrese una fecha: dd/mm/aaaa");
-scanf("%d/%d/%d",&fecha.dia,&fecha.mes,&fecha.anio);
 
-for (int i=0; i <tamAlm; i++){
+    system("cls");
+    printf("*******Carrera/s mas consumidoras de milanesas*********\n\n");
 
-    if(almuerzos[i].isEmpty==0 && compararFechas(fecha, almuerzos[i].fecha)){
 
-        mostrarAlmuerzo(almuerzos[i],comidas,tamC);
+    for( int i=0 ; i< tamCar; i++){
+mila[i]=cantidadAlmuerzosMilanesaxCarrera(1000,almuerzos,alumnos,tamAlumno,tamAlmuerzo);
+mila[i]=cantidadAlmuerzosMilanesaxCarrera(1001,almuerzos,alumnos,tamAlumno,tamAlmuerzo);
+
+mila[i]= cantidadAlmuerzosMilanesaxCarrera(1002,almuerzos,alumnos,tamAlumno,tamAlmuerzo);
+
+    }
+
+
+     for( int i=0 ; i< tamCar; i++){
+
+      if(mila[i]> mayor||flag==0){
+       mayor=mila[i];
         flag=1;
+      }
+
+
+     }
+}
+
+float totalDeudaAlumno(int legajo,eAlmuerzo almuerzos[], int tamAlmuerzos, eComida comidas [], int tamComidas){
+
+float total=0;
+
+for (int i=0; i<tamAlmuerzos; i++)
+    {
+
+        if (!almuerzos[i].isEmpty&&almuerzos[i].legajo==legajo)
+        {
+
+            for(int j=0; j<tamComidas; j++)
+            {
+
+
+                if(comidas[j].id==almuerzos[i].idComida)
+                {   total += comidas[j].precio;
+
+                }
+            }
+        }
     }
 
-    if(flag==0){
-
-        printf("no se encontrarn almuerzos \n\n");
-    }
+return total;
 }
 
+void informarDeudaAlumno ( eAlumno alumnos[], int tamAlumno, eAlmuerzo almuerzos[], int tamAlmuerzos, eComida comidas [], int tamComidas, eCarrera carreras[], int tamCarrera){
 
+int legajo;
+float deuda;
+
+system("cls");
+printf("*************Deudas alumnos*************\n\n");
+
+printf("Ingrese legajo: ");
+scanf("%d", &legajo);
+
+deuda= totalDeudaAlumno(legajo,almuerzos, tamAlmuerzos,comidas, tamComidas);
+
+for(int i=0; i<tamAlumno;i++){
+        if(!alumnos[i].isEmpty&&legajo==alumnos[i].legajo){
+mostrarAlumno(alumnos[i],carreras,tamCarrera);}
 }
 
-int compararFechas(eFecha f1, eFecha f2){
+printf("La deuda es $%.2f\n\n", deuda);
 
-int sonIguales=0;
-
-if(f1.dia== f2.dia && f1.mes==f2.mes && f1.anio==f2.anio){
-
-sonIguales=1;
-}
-
-return sonIguales;
+system("pause");
 }
