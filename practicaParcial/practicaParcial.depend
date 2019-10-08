@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1570559700 source:c:\users\drecanatesi\desktop\practicaparcial\orquestas.c
+	"Orquestas.h"
+
+1570555678 c:\users\drecanatesi\desktop\practicaparcial\orquestas.h
+	"Functions.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
+1570555678 c:\users\drecanatesi\desktop\practicaparcial\functions.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
+1570571148 source:c:\users\drecanatesi\desktop\practicaparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+	"Orquestas.h"
+	"Instrumentos.h"
+	"Musicos.h"
+
+1570559302 source:c:\users\drecanatesi\desktop\practicaparcial\functions.c
+	"Functions.h"
+
+1570569860 source:c:\users\drecanatesi\desktop\practicaparcial\musicos.c
+	"Musicos.h"
+
+1570571049 source:c:\users\drecanatesi\desktop\practicaparcial\instrumentos.c
+	"Instrumentos.h"
+
+1570571049 c:\users\drecanatesi\desktop\practicaparcial\instrumentos.h
+	"Functions.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
+1570571199 c:\users\drecanatesi\desktop\practicaparcial\musicos.h
+	"Functions.h"
+	"Orquestas.h"
+	"Instrumentos.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
