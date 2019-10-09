@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1570587038 source:c:\users\danre\onedrive\escritorio\practica\function.c
+	"Function.h"
+
+1570587038 c:\users\danre\onedrive\escritorio\practica\function.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<ctype.h>
+
+1570586655 source:c:\users\danre\onedrive\escritorio\practica\instrumento.c
+	"Instrumento.h"
+
+1570586655 c:\users\danre\onedrive\escritorio\practica\instrumento.h
+	"Function.h"
+
+1570588398 source:c:\users\danre\onedrive\escritorio\practica\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Musico.h"
+	"Instrumento.h"
+	"Function.h"
+
+1570587851 c:\users\danre\onedrive\escritorio\practica\orquesta.h
+
+1570588107 c:\users\danre\onedrive\escritorio\practica\musico.h
+	"Instrumento.h"
+
+1570588107 source:c:\users\danre\onedrive\escritorio\practica\musico.c
+	"Musico.h"
+
