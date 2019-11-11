@@ -1,0 +1,17 @@
+int ll_indexOf(LinkedList* this, void* pElement)
+{
+    int returnAux = -1;
+    int tam= ll_len(this);
+    Node* nodo=NULL;
+
+    if(this!=NULL&&tam>=0){
+        for(int i=0; i<tam;i++){
+            if(ll_get(this,i)==pElement){
+
+                returnAux=i;
+                break;
+            }
+
+        }
+
+    }
